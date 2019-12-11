@@ -12,40 +12,15 @@
 */
 
 Route::get('/', function () {
-    $name = request('name');
-    return view('welcome', [
-      'name' => $name
-    ]);
+    return view('welcome');
 });
 
-Route::get('/about', function () {
+Route::get('/about', function (){
     return view('about', [
-      'articles' => App\Article::latest()->get()
+        'articles' => App\Article::take(3)->latest()->get()
     ]);
 });
 
+Route::get('/articles', 'ArticlesController@index');
 Route::get('/articles/{article}', 'ArticlesController@show');
 
-
-Route::get('/test', function () {
-    return view('test', );
-});
-
-//  Used as a closure
-// Route::get('/posts/{post}', function($post) {
-//     $posts=[
-//       'my-first-post' => 'Hello, this is my first post.'
-//       ,'my-second-post' => 'Hello, this is my second post.'
-//     ];
-//
-//     if (! array_key_exists($post, $posts)) {
-//       abort(404, 'This is not the post you were looking for');
-//     }
-//
-//     return view('post', [
-//       'post' => $posts[$post]
-//     ]);
-// });
-
-// Calling a controller
-Route::get('/posts/{post}', 'PostsController@show');
