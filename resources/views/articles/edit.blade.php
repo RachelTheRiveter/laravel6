@@ -5,14 +5,16 @@
 @section('content')
     <div id="wrapper">
         <div id="page" class="container">
-            <h1>New Article</h1>
+            <h1 class=""heading has-text-weight-bold is-size-4">Edit Article</h1>
 
-            <form method="POST" action="/articles">
+            <form method="POST" action="/articles/{{$article->id}}">
                 @csrf
+                @method('PUT')
+
                 <div class="field">
                     <label class="label" for="Title">Title</label>
                     <div class="control">
-                        <input class="input" type="text" name="title" id="title">
+                        <input class="input" type="text" name="title" id="title" value="{{ $article->title }}">
                     </div>
                 </div>
 
@@ -20,14 +22,14 @@
                     <label class="label" for="excerpt">Excerpt</label>
                 </div>
                 <div class="control">
-                    <input class="textarea" name="excerpt" id="excerpt">
+                    <textarea class="textarea" name="excerpt" id="excerpt">{{ $article->excerpt }}</textarea>
                 </div>
 
                 <div class="field">
                     <label class="label" for="body">Body</label>
                 </div>
                 <div class="control">
-                    <input class="textarea" name="body" id="body">
+                    <textarea class="textarea" name="body" id="body">{{ $article->body }}</textarea>
                 </div>
 
                 <div class="field is-grouped">

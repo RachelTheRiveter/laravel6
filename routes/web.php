@@ -21,6 +21,20 @@ Route::get('/about', function (){
     ]);
 });
 
-Route::get('/articles', 'ArticlesController@index');
-Route::get('/articles/{article}', 'ArticlesController@show');
 
+Route::get('/articles', 'ArticlesController@index');
+Route::post('/articles', 'ArticlesController@store');
+Route::get('/articles/create', 'ArticlesController@create');
+Route::get('/articles/{article}', 'ArticlesController@show');
+Route::get('/articles/{article}/edit', 'ArticlesController@edit');
+Route::put('articles/{article}', 'ArticlesController@update');
+//Route::post();
+//Route::delete();
+
+// GET /videos -> List of all videos
+// GET /videos/create -> create a new video
+// POST /videos -> stores the new video you created
+// GET /videos/2 -> Gets a specific video
+// GET /videos/2/edit -> Edits a specific video
+// PUT /videos/2 -> stores the edits to the specific video
+// DELETE /videos/2 -> Deletes the video
