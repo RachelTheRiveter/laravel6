@@ -37,16 +37,13 @@ class ArticlesController extends Controller
         $this->validateArticle();
 
         $article = new Article(request(['title', 'excerpt', 'body']));
-        $article->user_id = 1; //auth()->id()
-        //auth()->user()->articles()->create($article);
+        $article->user_id = 1;  // auth()->id()
         $article->save();
 
         $article->tags()->attach(request('tags'));
-        //Validation
 
-        Article::create($this->validateArticle());
 
-        return redirect('articles.index');
+        return redirect(route('article.index'));
 
     }
 
